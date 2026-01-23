@@ -1,0 +1,254 @@
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f5;
+    --text-primary: #000000;
+    --text-secondary: #52525b;
+    --border-primary: #000000;
+    --font-main: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.section-title,
+.pill-label,
+.read-more-btn {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    /* Reduced padding */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    /* Reduced margin */
+    position: relative;
+}
+
+/* Common Black Border Style */
+.bw-border {
+    border: 2px solid var(--border-primary);
+}
+
+.bw-button {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bw-button:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    outline: 2px solid var(--border-primary);
+}
+
+/* Layout helpers */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Responsive Grid System */
+.responsive-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 100%;
+    /* Full width usage */
+    margin: 0 auto;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+.responsive-grid.wide-left {
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.cert-grid-responsive,
+.expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+
+    .responsive-grid,
+    .responsive-grid.wide-left {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .cert-grid-responsive,
+    .expertise-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+}
+
+/* Modal Styles */
+.cert-card-interactive {
+    padding: 1.5rem;
+    background: #f4f4f5;
+    box-shadow: 5px 5px 0 black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.cert-card-interactive:hover {
+    transform: translateY(-5px);
+    background: #fff;
+}
+
+.click-hint {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.6;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.cert-image-placeholder {
+    width: 100%;
+    height: 300px;
+    background: #f4f4f5;
+    border: 2px dashed black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* Timeline Styles */
+.timeline-container {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 3px solid black;
+    margin-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -2.6rem;
+    /* Adjust based on padding/border */
+    top: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.timeline-content:hover {
+    transform: translateX(5px);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Connect the line nicely */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    /* Use a pseudo-arrow or line connector if desired, distinct from the main line */
+    top: 2rem;
+    width: 1rem;
+    height: 2px;
+    background: black;
+}
+
+.social-link {
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+.social-link:hover {
+    transform: scale(1.2);
+}
