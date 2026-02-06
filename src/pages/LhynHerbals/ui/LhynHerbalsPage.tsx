@@ -107,7 +107,7 @@ const LhynHerbalsPage = () => {
             <div className="bw-border project-section bg-white">
                 <h3 className="project-section-title">The Solution</h3>
                 <p style={{ lineHeight: '1.7', fontSize: '0.95rem', marginBottom: '1rem' }}>
-                    I designed a comprehensive e-commerce and inventory management platform tailored to the needs of a small herbal business.
+                    Designed a comprehensive e-commerce and inventory management platform tailored to the needs of a small herbal business.
                     The system provides:
                 </p>
                 <ul style={{ paddingLeft: '1.5rem', lineHeight: '1.8', fontSize: '0.95rem', margin: '0' }}>
