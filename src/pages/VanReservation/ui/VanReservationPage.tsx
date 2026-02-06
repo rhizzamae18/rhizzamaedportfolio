@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ArrowUp } from 'lucide-react';
 import '@/app/styles/project-pages.css';
 import { useState, useEffect } from 'react';
 import van1 from '@/shared/assets/images/van1.webp';
@@ -39,6 +40,10 @@ const VanReservationPage = () => {
         if (selectedImageIndex !== null) {
             setSelectedImageIndex((selectedImageIndex + 1) % images.length);
         }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
@@ -175,7 +180,7 @@ const VanReservationPage = () => {
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className="bw-border"
+                        className="minimal-border"
                         style={{
                             overflow: 'hidden',
                             cursor: 'pointer',
@@ -193,53 +198,60 @@ const VanReservationPage = () => {
             {/* Modal for Full View */}
             {selectedImageIndex !== null && (
                 <div className="project-modal-overlay" onClick={() => setSelectedImageIndex(null)}>
-                    {/* Previous Button */}
-                    <button
-                        className="project-modal-nav-btn prev"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handlePrevImage();
-                        }}
-                    >
-                        ←
-                    </button>
+                    <div className="project-modal-content-wrapper" onClick={(e) => e.stopPropagation()}>
+                        {/* Close Button */}
+                        <button
+                            className="project-modal-close-btn"
+                            onClick={() => setSelectedImageIndex(null)}
+                        >
+                            ✕
+                        </button>
 
-                    <img
-                        src={images[selectedImageIndex].src}
-                        alt={images[selectedImageIndex].alt}
-                        className="project-modal-content"
-                        onClick={(e) => e.stopPropagation()}
-                    />
+                        {/* Previous Button */}
+                        <button
+                            className="project-modal-nav-btn prev"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handlePrevImage();
+                            }}
+                        >
+                            ←
+                        </button>
 
-                    {/* Next Button */}
-                    <button
-                        className="project-modal-nav-btn next"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handleNextImage();
-                        }}
-                    >
-                        →
-                    </button>
+                        <img
+                            src={images[selectedImageIndex].src}
+                            alt={images[selectedImageIndex].alt}
+                            className="project-modal-content"
+                        />
 
-                    {/* Close Button */}
-                    <button
-                        className="project-modal-close-btn"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedImageIndex(null);
-                        }}
-                    >
-                        ✕
-                    </button>
+                        {/* Next Button */}
+                        <button
+                            className="project-modal-nav-btn next"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleNextImage();
+                            }}
+                        >
+                            →
+                        </button>
 
-                    {/* Image Counter */}
-                    <div className="project-modal-counter">
-                        {selectedImageIndex + 1} / {images.length}
+                        {/* Image Counter */}
+                        <div className="project-modal-counter">
+                            {selectedImageIndex + 1} / {images.length}
+                        </div>
                     </div>
                 </div>
             )}
 
+            {/* Back to Top */}
+            <div className="back-to-top-container">
+                <button className="back-to-top-btn" onClick={scrollToTop}>
+                    <div className="back-to-top-icon">
+                        <ArrowUp size={20} />
+                    </div>
+                    <span>Back to Top</span>
+                </button>
+            </div>
         </div>
     );
 };

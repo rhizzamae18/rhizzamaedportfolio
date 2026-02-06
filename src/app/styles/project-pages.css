@@ -1,99 +1,115 @@
 /* Project Page Container */
 .project-page-container {
     min-height: 100vh;
-    background: #ffffff;
-    padding: 2rem 3rem;
+    background: var(--bg-primary);
+    padding: 3rem 4rem;
 }
 
 /* Back Button styling overrides/defaults */
 .project-back-btn {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     text-decoration: none;
 }
 
 /* Header Section */
 .project-header {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .project-title {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 900;
+    margin-bottom: 0.75rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
 }
 
 .project-subtitle {
-    font-size: 1.2rem;
-    color: #666;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
+    font-weight: 400;
 }
 
 .project-tech-stack {
-    font-size: 0.95rem;
+    font-size: 0.875rem;
     font-style: italic;
+    color: var(--text-tertiary);
 }
 
 /* Content Sections */
 .project-section {
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border-primary);
 }
 
 .project-section.bg-gray {
-    background: #f9f9f9;
+    background: var(--bg-tertiary);
 }
 
 .project-section.bg-white {
-    background: #ffffff;
+    background: var(--bg-secondary);
 }
 
 .project-section-title {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 500;
 }
 
 /* 2-Column Grid (Problem/Info, etc) */
 .project-grid-2-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
 }
 
 /* Info Sidebar specific styling */
 .project-info-label {
-    font-size: 0.85rem;
-    color: #666;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
     margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .project-info-value {
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 400;
     margin: 0;
+    color: var(--text-primary);
 }
 
 /* Screenshots Grid (Responsive Auto-fit) */
 .project-screenshots-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    /* Desktop default */
-    gap: 1rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.project-screenshots-grid>div {
+    border: 1px solid var(--border-primary);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.project-screenshots-grid>div:hover {
+    border-color: var(--border-secondary);
+    transform: translateY(-4px);
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .project-page-container {
-        padding: 1.5rem 1rem;
-        /* Reduced padding on mobile */
+        padding: 2rem 1.5rem;
     }
 
     .project-title {
-        font-size: 1.8rem;
-        /* Smaller title on mobile */
+        font-size: 2rem;
     }
 
     .project-subtitle {
@@ -102,82 +118,139 @@
 
     .project-grid-2-col {
         grid-template-columns: 1fr;
-        /* Stack columns on mobile */
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .project-section {
-        padding: 1.5rem;
-        /* Reduced inner padding */
+        padding: 2rem;
     }
 
     .project-screenshots-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        /* Smaller min-width for mobile images */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
     }
 }
 
-/* Modal Styles */
+/* Modal Styles - Minimalist Centered Modal */
 .project-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
     padding: 2rem;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.project-modal-content-wrapper {
+    position: relative;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    padding: 3rem;
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: scaleIn 0.3s ease;
 }
 
 .project-modal-content {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 100%;
+    max-height: calc(90vh - 10rem);
     object-fit: contain;
-    border: 3px solid white;
+    border: 1px solid var(--border-primary);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .project-modal-nav-btn {
     position: absolute;
-    background: white;
-    border: 2px solid black;
-    padding: 1rem 1.5rem;
-    font-size: 2rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
     cursor: pointer;
-    font-weight: bold;
-    z-index: 1001;
+    font-weight: 300;
+    z-index: 1002;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.project-modal-nav-btn:hover {
+    background: var(--text-primary);
+    color: var(--bg-secondary);
+    border-color: var(--text-primary);
 }
 
 .project-modal-nav-btn.prev {
-    left: 2rem;
+    left: 1rem;
 }
 
 .project-modal-nav-btn.next {
-    right: 2rem;
+    right: 1rem;
 }
 
 .project-modal-close-btn {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
-    background: white;
-    border: 2px solid black;
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: 1px solid var(--border-secondary);
+    padding: 0.5rem 0.75rem;
+    font-size: 1.25rem;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 300;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    z-index: 1002;
+    line-height: 1;
+}
+
+.project-modal-close-btn:hover {
+    background: var(--text-primary);
+    color: var(--bg-secondary);
+    border-color: var(--text-primary);
 }
 
 .project-modal-counter {
-    position: absolute;
-    bottom: 2rem;
-    background: white;
-    border: 2px solid black;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: bold;
+    margin-top: 1.5rem;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
 }
 
 @media (max-width: 768px) {
@@ -185,9 +258,18 @@
         padding: 1rem;
     }
 
+    .project-modal-content-wrapper {
+        padding: 2rem 1.5rem;
+        max-width: 95%;
+    }
+
+    .project-modal-content {
+        max-height: calc(90vh - 8rem);
+    }
+
     .project-modal-nav-btn {
-        padding: 0.5rem 1rem;
-        font-size: 1.5rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
     }
 
     .project-modal-nav-btn.prev {
@@ -199,13 +281,60 @@
     }
 
     .project-modal-close-btn {
-        top: 1rem;
-        right: 1rem;
-        padding: 0.25rem 0.5rem;
-        font-size: 1.2rem;
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 1rem;
     }
 
     .project-modal-counter {
-        bottom: 1rem;
+        margin-top: 1rem;
+        font-size: 0.8rem;
     }
+}
+
+/* Back to Top Button */
+.back-to-top-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.back-to-top-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.6;
+}
+
+.back-to-top-btn:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+.back-to-top-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--border-primary);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.back-to-top-btn:hover .back-to-top-icon {
+    background: var(--text-primary);
+    color: var(--bg-primary);
 }

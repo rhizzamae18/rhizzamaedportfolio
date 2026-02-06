@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { ArrowUp } from 'lucide-react';
 import herbal1 from '@/shared/assets/images/herbal1.webp';
 import herbal2 from '@/shared/assets/images/herbal2.webp';
 import herbal3 from '@/shared/assets/images/herbal3.webp';
@@ -41,6 +42,11 @@ const LhynHerbalsPage = () => {
             setSelectedImageIndex((selectedImageIndex + 1) % images.length);
         }
     };
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <div className="project-page-container">
             {/* Back Button */}
@@ -175,7 +181,7 @@ const LhynHerbalsPage = () => {
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className="bw-border"
+                        className="minimal-border"
                         style={{
                             overflow: 'hidden',
                             cursor: 'pointer',
@@ -193,52 +199,60 @@ const LhynHerbalsPage = () => {
             {/* Modal for Full View */}
             {selectedImageIndex !== null && (
                 <div className="project-modal-overlay" onClick={() => setSelectedImageIndex(null)}>
-                    {/* Previous Button */}
-                    <button
-                        className="project-modal-nav-btn prev"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handlePrevImage();
-                        }}
-                    >
-                        ←
-                    </button>
+                    <div className="project-modal-content-wrapper" onClick={(e) => e.stopPropagation()}>
+                        {/* Close Button */}
+                        <button
+                            className="project-modal-close-btn"
+                            onClick={() => setSelectedImageIndex(null)}
+                        >
+                            ✕
+                        </button>
 
-                    <img
-                        src={images[selectedImageIndex].src}
-                        alt={images[selectedImageIndex].alt}
-                        className="project-modal-content"
-                        onClick={(e) => e.stopPropagation()}
-                    />
+                        {/* Previous Button */}
+                        <button
+                            className="project-modal-nav-btn prev"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handlePrevImage();
+                            }}
+                        >
+                            ←
+                        </button>
 
-                    {/* Next Button */}
-                    <button
-                        className="project-modal-nav-btn next"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handleNextImage();
-                        }}
-                    >
-                        →
-                    </button>
+                        <img
+                            src={images[selectedImageIndex].src}
+                            alt={images[selectedImageIndex].alt}
+                            className="project-modal-content"
+                        />
 
-                    {/* Close Button */}
-                    <button
-                        className="project-modal-close-btn"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedImageIndex(null);
-                        }}
-                    >
-                        ✕
-                    </button>
+                        {/* Next Button */}
+                        <button
+                            className="project-modal-nav-btn next"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleNextImage();
+                            }}
+                        >
+                            →
+                        </button>
 
-                    {/* Image Counter */}
-                    <div className="project-modal-counter">
-                        {selectedImageIndex + 1} / {images.length}
+                        {/* Image Counter */}
+                        <div className="project-modal-counter">
+                            {selectedImageIndex + 1} / {images.length}
+                        </div>
                     </div>
                 </div>
             )}
+
+            {/* Back to Top */}
+            <div className="back-to-top-container">
+                <button className="back-to-top-btn" onClick={scrollToTop}>
+                    <div className="back-to-top-icon">
+                        <ArrowUp size={20} />
+                    </div>
+                    <span>Back to Top</span>
+                </button>
+            </div>
         </div>
     );
 };

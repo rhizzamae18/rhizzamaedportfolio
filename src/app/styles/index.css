@@ -53,6 +53,16 @@ h4,
     border: 2px solid var(--border-primary);
 }
 
+/* Minimal Border Style */
+.minimal-border {
+    border: 1px solid var(--border-primary);
+    transition: border-color 0.3s ease;
+}
+
+.minimal-border:hover {
+    border-color: var(--border-secondary);
+}
+
 .bw-button {
     background: var(--text-primary);
     color: var(--bg-primary);
@@ -183,7 +193,6 @@ img {
     width: 100%;
     height: 300px;
     background: #f4f4f5;
-    border: 2px dashed black;
     display: flex;
     align-items: center;
     justify-content: center;
