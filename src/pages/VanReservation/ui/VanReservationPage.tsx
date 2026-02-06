@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 import '@/app/styles/project-pages.css';
 import { useState, useEffect } from 'react';
 import van1 from '@/shared/assets/images/van1.webp';
@@ -47,7 +48,12 @@ const VanReservationPage = () => {
     };
 
     return (
-        <div className="project-page-container">
+        <motion.div
+            className="project-page-container"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+        >
             {/* Back Button */}
             <Link to="/" className="bw-button project-back-btn">
                 ← Back to Portfolio
@@ -252,7 +258,7 @@ const VanReservationPage = () => {
                     <span>Back to Top</span>
                 </button>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

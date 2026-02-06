@@ -2,19 +2,19 @@
 .project-page-container {
     min-height: 100vh;
     background: var(--bg-primary);
-    padding: 3rem 4rem;
+    padding: 2rem 3rem;
 }
 
 /* Back Button styling overrides/defaults */
 .project-back-btn {
     display: inline-block;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     text-decoration: none;
 }
 
 /* Header Section */
 .project-header {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .project-title {
@@ -39,8 +39,8 @@
 
 /* Content Sections */
 .project-section {
-    padding: 2.5rem;
-    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     border: 1px solid var(--border-primary);
 }
 
@@ -62,8 +62,8 @@
 .project-grid-2-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    margin-bottom: 2.5rem;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 /* Info Sidebar specific styling */
@@ -87,7 +87,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .project-screenshots-grid>div {
@@ -297,7 +297,7 @@
 .back-to-top-container {
     display: flex;
     justify-content: center;
-    margin-top: 4rem;
+    margin-top: 2.5rem;
     padding-bottom: 2rem;
 }
 
