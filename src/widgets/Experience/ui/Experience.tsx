@@ -120,7 +120,13 @@ const Experience = () => {
                                             <span>{exp.role}</span>
                                         </div>
                                     </div>
-                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem' }}>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'flex-start', // Better for mobile
+                                        gap: '0.5rem',
+                                        minWidth: 'fit-content'
+                                    }}>
                                         <div style={{
                                             display: 'flex',
                                             alignItems: 'center',

@@ -226,9 +226,10 @@ const Certifications = () => {
                                 style={{
                                     position: 'sticky',
                                     top: '20px',
-                                    left: 'calc(100% - 60px)',
+                                    right: '20px',
                                     width: '40px',
                                     height: '40px',
+                                    marginLeft: 'auto',
                                     borderRadius: '50%',
                                     background: 'white',
                                     border: 'none',

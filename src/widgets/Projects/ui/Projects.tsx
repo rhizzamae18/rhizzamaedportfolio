@@ -50,7 +50,7 @@ const Projects = () => {
 
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
                 gap: '2.5rem',
                 justifyContent: 'center'
             }}>
@@ -91,7 +91,12 @@ const Projects = () => {
                             background: `linear-gradient(to right, ${project.colors[0]}, ${project.colors[1]})`
                         }}></div>
 
-                        <div style={{ padding: '2.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <div style={{
+                            padding: 'clamp(1.5rem, 5vw, 2.5rem)',
+                            flex: 1,
+                            display: 'flex',
+                            flexDirection: 'column'
+                        }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: project.colors[1], marginBottom: '1.2rem' }}>
                                 <Layout size={20} />
                                 <span style={{ fontSize: '0.85rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px' }}>Project</span>
