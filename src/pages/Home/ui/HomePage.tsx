@@ -26,28 +26,76 @@ const HomePage = () => {
             background: '#f8fbff'
         }}>
             {/* Background Decorations */}
-            <div style={{
-                position: 'absolute',
-                top: '20%',
-                left: '-10%',
-                width: '40%',
-                height: '40%',
-                background: 'radial-gradient(circle, rgba(168, 213, 226, 0.15), transparent 70%)',
-                zIndex: 0,
-                pointerEvents: 'none',
-                filter: 'blur(60px)'
-            }}></div>
-            <div style={{
-                position: 'absolute',
-                bottom: '10%',
-                right: '-5%',
-                width: '35%',
-                height: '35%',
-                background: 'radial-gradient(circle, rgba(126, 184, 204, 0.1), transparent 70%)',
-                zIndex: 0,
-                pointerEvents: 'none',
-                filter: 'blur(50px)'
-            }}></div>
+            <motion.div
+                animate={{
+                    scale: [1, 1.2, 1],
+                    x: [0, 50, 0],
+                    y: [0, 30, 0],
+                }}
+                transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                style={{
+                    position: 'absolute',
+                    top: '20%',
+                    left: '-10%',
+                    width: '40%',
+                    height: '40%',
+                    background: 'radial-gradient(circle, rgba(168, 213, 226, 0.15), transparent 70%)',
+                    zIndex: 0,
+                    pointerEvents: 'none',
+                    filter: 'blur(60px)'
+                }}
+            />
+            <motion.div
+                animate={{
+                    scale: [1, 1.1, 1],
+                    x: [0, -30, 0],
+                    y: [0, 50, 0],
+                }}
+                transition={{
+                    duration: 25,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2
+                }}
+                style={{
+                    position: 'absolute',
+                    bottom: '10%',
+                    right: '-5%',
+                    width: '35%',
+                    height: '35%',
+                    background: 'radial-gradient(circle, rgba(126, 184, 204, 0.1), transparent 70%)',
+                    zIndex: 0,
+                    pointerEvents: 'none',
+                    filter: 'blur(50px)'
+                }}
+            />
+            <motion.div
+                animate={{
+                    scale: [1, 1.15, 1],
+                    opacity: [0.1, 0.2, 0.1],
+                }}
+                transition={{
+                    duration: 18,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 5
+                }}
+                style={{
+                    position: 'absolute',
+                    top: '40%',
+                    right: '15%',
+                    width: '20%',
+                    height: '20%',
+                    background: 'radial-gradient(circle, rgba(168, 213, 226, 0.08), transparent 70%)',
+                    zIndex: 0,
+                    pointerEvents: 'none',
+                    filter: 'blur(40px)'
+                }}
+            />
 
             <Header />
 

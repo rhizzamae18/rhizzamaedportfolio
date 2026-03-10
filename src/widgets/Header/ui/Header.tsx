@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import idPic from '@/shared/assets/images/idpic.webp';
 import picc2 from '@/shared/assets/images/picc2.jpg';
+import rizlogo from '@/shared/assets/images/rizlogo.png';
 
 const Header = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -25,6 +26,28 @@ const Header = () => {
             justifyContent: 'center',
             padding: '3rem 2rem'
         }}>
+            {/* Brand Logo */}
+            <div style={{
+                position: 'absolute',
+                top: '2rem',
+                left: '2rem',
+                zIndex: 10,
+                animation: 'slideInDown 0.8s ease-out'
+            }}>
+                <img
+                    src={rizlogo}
+                    alt="RIZ Logo"
+                    style={{
+                        width: '60px',
+                        height: 'auto',
+                        filter: 'drop-shadow(0 4px 10px rgba(168, 213, 226, 0.4))',
+                        transition: 'transform 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1) rotate(-5deg)'}
+                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'}
+                />
+            </div>
+
             {/* Animated Background */}
             <div style={{
                 position: 'absolute',
