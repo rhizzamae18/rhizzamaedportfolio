@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowUp, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import herbal1 from '@/shared/assets/images/herbal1.webp';
 import herbal2 from '@/shared/assets/images/herbal2.webp';
 import herbal3 from '@/shared/assets/images/herbal3.webp';
@@ -203,52 +203,76 @@ const LhynHerbalsPage = () => {
             </div>
 
             {/* Modal for Full View */}
-            {selectedImageIndex !== null && (
-                <div className="project-modal-overlay" onClick={() => setSelectedImageIndex(null)}>
-                    <div className="project-modal-content-wrapper" onClick={(e) => e.stopPropagation()}>
-                        {/* Close Button */}
-                        <button
-                            className="project-modal-close-btn"
-                            onClick={() => setSelectedImageIndex(null)}
+            <AnimatePresence>
+                {selectedImageIndex !== null && (
+                    <motion.div
+                        className="project-modal-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImageIndex(null)}
+                    >
+                        <motion.div
+                            className="project-modal-content-wrapper"
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            onClick={(e) => e.stopPropagation()}
                         >
-                            ✕
-                        </button>
+                            {/* Close Button */}
+                            <button
+                                className="project-modal-close-btn"
+                                onClick={() => setSelectedImageIndex(null)}
+                                aria-label="Close modal"
+                            >
+                                <X size={24} />
+                            </button>
 
-                        {/* Previous Button */}
-                        <button
-                            className="project-modal-nav-btn prev"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                handlePrevImage();
-                            }}
-                        >
-                            ←
-                        </button>
+                            {/* Navigation Controls Wrapper */}
+                            <div className="project-modal-main-view">
+                                {/* Previous Button */}
+                                <button
+                                    className="project-modal-nav-btn prev"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handlePrevImage();
+                                    }}
+                                    aria-label="Previous image"
+                                >
+                                    <ChevronLeft size={32} />
+                                </button>
 
-                        <img
-                            src={images[selectedImageIndex].src}
-                            alt={images[selectedImageIndex].alt}
-                            className="project-modal-content"
-                        />
+                                <div className="project-modal-image-container">
+                                    <img
+                                        src={images[selectedImageIndex].src}
+                                        alt={images[selectedImageIndex].alt}
+                                        className="project-modal-content"
+                                    />
+                                </div>
 
-                        {/* Next Button */}
-                        <button
-                            className="project-modal-nav-btn next"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                handleNextImage();
-                            }}
-                        >
-                            →
-                        </button>
+                                {/* Next Button */}
+                                <button
+                                    className="project-modal-nav-btn next"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleNextImage();
+                                    }}
+                                    aria-label="Next image"
+                                >
+                                    <ChevronRight size={32} />
+                                </button>
+                            </div>
 
-                        {/* Image Counter */}
-                        <div className="project-modal-counter">
-                            {selectedImageIndex + 1} / {images.length}
-                        </div>
-                    </div>
-                </div>
-            )}
+                            {/* Image Counter */}
+                            <div className="project-modal-counter">
+                                <span className="current">{selectedImageIndex + 1}</span>
+                                <span className="separator">/</span>
+                                <span className="total">{images.length}</span>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Back to Top */}
             <div className="back-to-top-container">

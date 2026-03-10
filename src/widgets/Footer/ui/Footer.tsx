@@ -4,10 +4,10 @@ import { Facebook, Instagram, Github, Linkedin } from 'lucide-react';
 const Footer = () => {
     return (
         <footer style={{
-            borderTop: '2px solid black',
+            borderTop: '3px solid #a8d5e2',
             padding: '2rem 1rem',
-            marginTop: '2rem',
-            backgroundColor: '#f4f4f5',
+            marginTop: '3rem',
+            background: 'linear-gradient(135deg, #f0f7ff, white)',
             textAlign: 'center'
         }}>
             <div style={{
@@ -17,19 +17,16 @@ const Footer = () => {
                 marginBottom: '1rem'
             }}>
                 <a href="https://www.facebook.com/rhizzamae.discaya" className="social-link">
-                    <Facebook size={24} color="black" />
+                    <Facebook size={24} color="#6ba3be" />
                 </a>
-                {/* <a href="" className="social-link">
-                    <Instagram size={24} color="black" />
-                </a> */}
                 <a href="https://github.com/rhizzamae18/rhizzamaedportfolio.git" className="social-link">
-                    <Github size={24} color="black" />
+                    <Github size={24} color="#6ba3be" />
                 </a>
                 <a href="https://www.linkedin.com/in/rhizza-mae-discaya-162abb37a/" className="social-link">
-                    <Linkedin size={24} color="black" />
+                    <Linkedin size={24} color="#6ba3be" />
                 </a>
             </div>
-            <p style={{ fontSize: '0.9rem', fontWeight: 600 }}>© 2026 Rhizza Mae C. Discaya. All rights reserved.</p>
+            <p style={{ fontSize: '0.9rem', fontWeight: 600, color: '#5a6c7d' }}>© 2026 Rhizza Mae C. Discaya. All rights reserved.</p>
         </footer>
     );
 };
